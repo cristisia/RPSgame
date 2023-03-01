@@ -113,3 +113,29 @@ a {
   color: #000000;
   padding-left: 18px;
 }
+
+.downloadPDF {
+  color:#000000;
+  font-weight: bold;
+  padding: 7px 8px;
+  padding-left: 32px;
+  border: none;
+  border-radius: 6px;
+  background-color: #e8bd15;
+}
+
+.downloadPDF:hover {
+  cursor: pointer;
+  background-color: #e8bd15;
+  box-shadow: 5px 10px 30px rgba(220, 180, 20, 0.336);
+  transition: all ease 0.2s;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.pdf-icon {
+  background-image: url(/images/pdf.png);
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: ;
+}

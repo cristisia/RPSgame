@@ -1,36 +1,36 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import Header from "../components/Header";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import { Table } from "react-bootstrap";
-import { checkLogin } from "../action/auth";
+/* eslint-disable no-unused-vars */
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Header from '../components/Header'
+import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
+import { Table } from 'react-bootstrap'
+import { checkLogin } from '../action/auth'
 
-import Modal from "react-bootstrap/Modal";
-import React, { useState, useEffect } from "react";
+import Modal from 'react-bootstrap/Modal'
+import React, { useState, useEffect } from 'react'
 
-import { database } from "../services/firebase";
-import { collection, getDocs } from "firebase/firestore";
-import { getDoc, doc } from "firebase/firestore";
+import { database } from '../services/firebase'
+import { collection, getDocs, getDoc, doc } from 'firebase/firestore'
 
-function LattoModal(props) {
-  const [users, setUSers] = useState([]);
+function LattoModal (props) {
+  const [users, setUSers] = useState([])
 
   const getUsers = async () => {
-    let arrUsers = [];
-    let dataUsersRef = collection(database, "users");
-    let compileData = await getDocs(dataUsersRef).then((res) => {
+    const arrUsers = []
+    const dataUsersRef = collection(database, 'users')
+    const compileData = await getDocs(dataUsersRef).then((res) => {
       res.forEach((e) => {
-        arrUsers.push(e.data());
-      });
-    });
-    return arrUsers;
-  };
+        arrUsers.push(e.data())
+      })
+    })
+    return arrUsers
+  }
 
   useEffect(() => {
     getUsers().then((res) => {
-      setUSers(res);
-    });
-  },[]);
+      setUSers(res)
+    })
+  }, [])
 
   return (
     <Modal
@@ -58,7 +58,7 @@ function LattoModal(props) {
       </Modal.Body>
       <Modal.Body className="text-center">
         <Button variant="warning" href="/games/latto" onClick={props.onHide}>
-          Play now
+          Play Now
         </Button>
       </Modal.Body>
       <Modal.Footer>
@@ -91,32 +91,32 @@ function LattoModal(props) {
         </Table>
 
         <Button variant="warning" href="/games/latto" onClick={props.onHide}>
-          Play now
+          Play Now
         </Button>
       </Modal.Footer>
     </Modal>
-  );
+  )
 }
 
-function PrsModal(props) {
-  const [users, setUSers] = useState([]);
+function PrsModal (props) {
+  const [users, setUSers] = useState([])
 
   const getUsers = async () => {
-    let arrUsers = [];
-    let dataUsersRef = collection(database, "users");
-    let compileData = await getDocs(dataUsersRef).then((res) => {
+    const arrUsers = []
+    const dataUsersRef = collection(database, 'users')
+    const compileData = await getDocs(dataUsersRef).then((res) => {
       res.forEach((e) => {
-        arrUsers.push(e.data());
-      });
-    });
-    return arrUsers;
-  };
+        arrUsers.push(e.data())
+      })
+    })
+    return arrUsers
+  }
 
   useEffect(() => {
     getUsers().then((res) => {
-      setUSers(res);
-    });
-  },[]);
+      setUSers(res)
+    })
+  }, [])
 
   return (
     <Modal
@@ -146,7 +146,7 @@ function PrsModal(props) {
       </Modal.Body>
       <Modal.Body className="text-center">
         <Button variant="warning" href="/play" onClick={props.onHide}>
-          Play now
+          Play Now
         </Button>
       </Modal.Body>
       <Modal.Footer>
@@ -177,34 +177,39 @@ function PrsModal(props) {
             ))}
           </tbody>
         </Table>
-
+        <a href="Leaderboardch11.pdf" download="Leaderboardch11.pdf">
+          <button className="downloadPDF">
+            <span class="pdf-icon"></span>
+            <span class="pdf-text">Download leaderboard in PDF</span>
+          </button>
+        </a>
         <Button variant="warning" href="/play" onClick={props.onHide}>
-          Play now
+          Play Now
         </Button>
       </Modal.Footer>
     </Modal>
-  );
+  )
 }
 
-function PunchManModal(props) {
-  const [users, setUSers] = useState([]);
+function PunchManModal (props) {
+  const [users, setUSers] = useState([])
 
   const getUsers = async () => {
-    let arrUsers = [];
-    let dataUsersRef = collection(database, "users");
-    let compileData = await getDocs(dataUsersRef).then((res) => {
+    const arrUsers = []
+    const dataUsersRef = collection(database, 'users')
+    const compileData = await getDocs(dataUsersRef).then((res) => {
       res.forEach((e) => {
-        arrUsers.push(e.data());
-      });
-    });
-    return arrUsers;
-  };
+        arrUsers.push(e.data())
+      })
+    })
+    return arrUsers
+  }
 
   useEffect(() => {
     getUsers().then((res) => {
-      setUSers(res);
-    });
-  },[]);
+      setUSers(res)
+    })
+  }, [])
 
   return (
     <Modal
@@ -228,7 +233,7 @@ function PunchManModal(props) {
       </Modal.Body>
       <Modal.Body className="text-center">
         <Button variant="warning" href="/games/punchman" onClick={props.onHide}>
-          Play now
+          Play Now
         </Button>
       </Modal.Body>
       <Modal.Footer>
@@ -260,47 +265,46 @@ function PunchManModal(props) {
         </Table>
 
         <Button variant="warning" href="/games/punchman" onClick={props.onHide}>
-          Play now
+          Play Now
         </Button>
       </Modal.Footer>
     </Modal>
-  );
+  )
 }
 
-function GameList() {
-  checkLogin();
-  const [modalShow1, setModalShow1] = useState(false);
-  const [modalShow2, setModalShow2] = useState(false);
-  const [modalShow3, setModalShow3] = useState(false);
-  
+function GameList () {
+  checkLogin()
+  const [modalShow1, setModalShow1] = useState(false)
+  const [modalShow2, setModalShow2] = useState(false)
+  const [modalShow3, setModalShow3] = useState(false)
+
   const [users, setUsers] = useState({
     latoPlayed: '',
     rpsPlayed: '',
     punchPlayed: ''
-  });
+  })
 
   useEffect(() => {
-    const uid = localStorage.getItem('uid');
-    getDoc(doc(database, "users", uid))
-    .then
-    (docSnap => {
-      if(docSnap.exists()) {
-        setUsers({
-          ...users, ...docSnap.data() 
-        })
-      } else {
-        console.log("No such document!");
-      }
-    })
-  },[]);
+    const uid = localStorage.getItem('uid')
+    getDoc(doc(database, 'users', uid))
+      .then(docSnap => {
+        if (docSnap.exists()) {
+          setUsers({
+            ...users, ...docSnap.data()
+          })
+        } else {
+          console.log('No such document!')
+        }
+      })
+  }, [])
 
   return (
-    <div style={{ backgroundColor: "#659dbd", height:'100vh' }}>
+    <div style={{ backgroundColor: '#659dbd', height: '100vh' }}>
       <Header />
       <h1 className="text-center py-5">GAME LIST</h1>
       <div className="container-fluid pb-5">
         <div className="d-flex justify-content-around">
-          <Card style={{ width: "18rem" }} className="shadow">
+          <Card style={{ width: '18rem' }} className="shadow">
             <Card.Img variant="top" src="/images/latto.png" />
             <Card.Body>
               <Card.Title>Latto-latto</Card.Title>
@@ -322,7 +326,7 @@ function GameList() {
               />
             </Card.Body>
           </Card>
-          <Card style={{ width: "18rem" }} className="shadow">
+          <Card style={{ width: '18rem' }} className="shadow">
             <Card.Img variant="top" src="/images/prs.png" />
             <Card.Body>
               <Card.Title>Paper Rock Scissor</Card.Title>
@@ -340,7 +344,7 @@ function GameList() {
               <PrsModal show={modalShow2} onHide={() => setModalShow2(false)} />
             </Card.Body>
           </Card>
-          <Card style={{ width: "18rem" }} className="shadow">
+          <Card style={{ width: '18rem' }} className="shadow">
             <Card.Img variant="top" src="/images/punchman.png" />
             <Card.Body>
               <Card.Title>Punch Man</Card.Title>
@@ -365,7 +369,7 @@ function GameList() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default GameList;
+export default GameList

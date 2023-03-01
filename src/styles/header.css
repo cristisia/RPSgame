@@ -3,12 +3,11 @@
     padding-left: 50px;
     font-weight: bold;
     padding-top: 1px;
-    padding-bottom: 1px;
 }
 
 .navbar {
     padding: 10px 0px;
-    line-height: 50px;
+    line-height: 20px;
 }
 
 .nav-item{

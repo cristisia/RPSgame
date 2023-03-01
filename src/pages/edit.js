@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import "bootstrap/dist/css/bootstrap.min.css";
-import { checkLogin } from "../action/auth";
-import { getDoc, doc, updateDoc } from "firebase/firestore";
-import { database } from "../services/firebase";
-import Header from '../components/Header';
+import React, { useEffect, useState } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { checkLogin } from '../action/auth'
+import { getDoc, doc, updateDoc } from 'firebase/firestore'
+import { database } from '../services/firebase'
+import Header from '../components/Header'
 
 // class EditProfile extends React.Component {
 //     state = {};
@@ -27,63 +27,62 @@ import Header from '../components/Header';
 
 // )
 
-
 const Edit = () => {
-    const [data, setData] = useState({
-      firstName: '',
-      lastName: '',
-      username:'',
-      email:'',
-      address: '',
-      country: '',
-      handphone: '',
-      accountNumber: '',
-      score: ''
-    })
-    const [loading, setLoading] = useState(true)
-    const [editing, setEditing] = useState('Update Profile')
-  
-    const handleChange = (event) => {
-      let inputs = {[event.target.name] : event.target.value}
-      setData({...data, ...inputs})
-    }
-  
-    const handleSubmit = () => {
-      const uid = localStorage.getItem('uid')
-      setEditing('processing ...');
-        const timeout = 5000;
-        setTimeout(() => {
-          const update = updateDoc(doc(database, "users", uid), data)
-          .then 
-          (alert('Update success.'))
-          setEditing('Done');
-          window.location = '/profile';
-        }, timeout);
-    }
-  
-    useEffect(() => {
-      checkLogin();
-      const uid = localStorage.getItem('uid');
-      getDoc(doc(database, "users", uid))
+  const [data, setData] = useState({
+    firstName: '',
+    lastName: '',
+    username: '',
+    email: '',
+    address: '',
+    country: '',
+    handphone: '',
+    accountNumber: '',
+    score: ''
+  })
+  const [loading, setLoading] = useState(true)
+  const [editing, setEditing] = useState('Update Profile')
+
+  const handleChange = (event) => {
+    const inputs = { [event.target.name]: event.target.value }
+    setData({ ...data, ...inputs })
+  }
+
+  const handleSubmit = () => {
+    const uid = localStorage.getItem('uid')
+    setEditing('processing ...')
+    const timeout = 5000
+    setTimeout(() => {
+      const update = updateDoc(doc(database, 'users', uid), data)
+        .then
+        (alert('Update success.'))
+      setEditing('Done')
+      window.location = '/profile'
+    }, timeout)
+  }
+
+  useEffect(() => {
+    checkLogin()
+    const uid = localStorage.getItem('uid')
+    getDoc(doc(database, 'users', uid))
       .then
       (docSnap => {
-        if(docSnap.exists()) {
+        if (docSnap.exists()) {
           // console.log(docSnap.data())
           setData({
-            ...data, ...docSnap.data() 
+            ...data, ...docSnap.data()
           })
           setLoading(false)
         } else {
-          console.log("No such document!");
+          console.log('No such document!')
         }
       })
-    }, [])
-  
-    if(loading) {
-      return <h1>Loading ...</h1>
-    }
-  
-      return (
+  }, [])
+
+  if (loading) {
+    return <h1>Loading ...</h1>
+  }
+
+  return (
         <>
         <Header />
         <div className="container rounded bg-white mt-5">
@@ -129,7 +128,7 @@ const Edit = () => {
           </div>
         </div>
         </>
-      );
-  };
-    
-  export default Edit;
+  )
+}
+
+export default Edit

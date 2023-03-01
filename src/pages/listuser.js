@@ -1,31 +1,30 @@
-import React from "react";
-import Header from "../components/Header";
-import { Table, Container } from "reactstrap";
-import { database } from "../services/firebase";
-import { collection, getDocs } from "firebase/firestore";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
+import Header from '../components/Header'
+import { Table, Container } from 'reactstrap'
+import { database } from '../services/firebase'
+import { collection, getDocs } from 'firebase/firestore'
 
-function UserList() {
-    const [users, setUSers] = useState([]);
+function UserList () {
+  const [users, setUSers] = useState([])
 
-    const getUsers = async () => {
-        let arrUsers = [];
-        let dataUsersRef = collection(database, "users");
-        let compileData = await getDocs(dataUsersRef).then((res) => {
-        res.forEach((e) => {
-            arrUsers.push(e.data());
-        });
-        });
-        return arrUsers;
-    };
+  const getUsers = async () => {
+    const arrUsers = []
+    const dataUsersRef = collection(database, 'users')
+    const compileData = await getDocs(dataUsersRef).then((res) => {
+      res.forEach((e) => {
+        arrUsers.push(e.data())
+      })
+    })
+    return arrUsers
+  }
 
-    useEffect(() => {
-        getUsers().then((res) => {
-        setUSers(res);
-        });
-    }, []);
-  
-    return (
+  useEffect(() => {
+    getUsers().then((res) => {
+      setUSers(res)
+    })
+  }, [])
+
+  return (
         <div>
             <Header />
             <h1 className="container text-center py-5 text-white">List User</h1>
@@ -52,7 +51,7 @@ function UserList() {
             </div>
             </Container>
         </div>
-    )
+  )
 }
 
 export default UserList

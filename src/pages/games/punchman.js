@@ -1,32 +1,32 @@
-import React, { useState } from "react";
-import { Button, Container } from "react-bootstrap";
-import Header from "../../components/Header";
-import { addScore } from "../../action/score";
-import { getDoc, doc, updateDoc } from "firebase/firestore";
-import { database } from "../../services/firebase";
+import React, { useState } from 'react'
+import { Button, Container } from 'react-bootstrap'
+import Header from '../../components/Header'
+import { addScore } from '../../action/score'
+import { getDoc, doc, updateDoc } from 'firebase/firestore'
+import { database } from '../../services/firebase'
 
-function Punchman() {
-  const [punchmanScore, setPunchmanScore] = useState(null);
-  const [buttonDisabled, setButtonDisabled] = useState(false);
+function Punchman () {
+  const [punchmanScore, setPunchmanScore] = useState(null)
+  const [buttonDisabled, setButtonDisabled] = useState(false)
 
-  function handleGenerateScoreClick() {
-    const punchmanScore = Math.floor(Math.random() * 10) + 1; // menghasilkan angka acak antara 0 dan 10
-    setPunchmanScore(punchmanScore);
-    setButtonDisabled(true);
-    addScore("users", punchmanScore);
+  function handleGenerateScoreClick () {
+    const punchmanScore = Math.floor(Math.random() * 10) + 1 // menghasilkan angka acak antara 0 dan 10
+    setPunchmanScore(punchmanScore)
+    setButtonDisabled(true)
+    addScore('users', punchmanScore)
     const uid = localStorage.getItem('uid')
-    getDoc(doc(database, "users", uid))
+    getDoc(doc(database, 'users', uid))
       .then
       (docSnap => {
-          if(docSnap.exists()) {
-              updateDoc(doc(database, "users", uid), {
-                  punchPlayed: 'Already Played'
-              })
-          } else {
-              console.log("No such document!");
-          }
+        if (docSnap.exists()) {
+          updateDoc(doc(database, 'users', uid), {
+            punchPlayed: 'Already Played'
+          })
+        } else {
+          console.log('No such document!')
+        }
       })
-    console.log(`Score: ${punchmanScore}`);
+    console.log(`Score: ${punchmanScore}`)
     // Lakukan sesuatu dengan skor, seperti memperbarui state komponen Anda
   }
   return (
@@ -49,7 +49,7 @@ function Punchman() {
             type="text"
             id="score"
             name="score"
-            value={punchmanScore || ""}
+            value={punchmanScore || ''}
             readOnly
           />
         </Container>
@@ -64,7 +64,7 @@ function Punchman() {
         </Button>
       </div>
     </>
-  );
+  )
 }
 
-export default Punchman;
+export default Punchman

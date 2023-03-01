@@ -1,11 +1,12 @@
-import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
+/* eslint-disable no-unused-vars */
+import React from 'react'
+import { Container, Row, Col } from 'reactstrap'
 import ReactPlayer from 'react-player'
-import dynamic from "next/dynamic";
-import { checkLogin } from '@/action/auth';
+import dynamic from 'next/dynamic'
+import { checkLogin } from '@/action/auth'
 
 const HomePage = () => {
-  checkLogin();
+  checkLogin()
   return (
     <section className="section position-relative">
       <Container>
@@ -21,13 +22,13 @@ const HomePage = () => {
             </Col>
             <Col lg={6}>
               <div className="mt-5 mt-lg-0">
-                <ReactPlayer url='https://www.youtube.com/watch?v=qWPtKtYEsN4&ab_channel=developedbyed' /> 
+                <ReactPlayer url='https://www.youtube.com/watch?v=qWPtKtYEsN4&ab_channel=developedbyed' />
               </div>
             </Col>
           </Row>
       </Container>
     </section>
-  );
+  )
 }
 
-export default dynamic (() => Promise.resolve(HomePage), {ssr: false});
+export default dynamic(() => Promise.resolve(HomePage), { ssr: false })

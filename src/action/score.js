@@ -4,8 +4,7 @@ import { database } from '../services/firebase'
 export function addScore (users, point) {
   const uid = localStorage.getItem('uid')
   getDoc(doc(database, users, uid))
-    .then
-    (docSnap => {
+    .then(docSnap => {
       if (docSnap.exists()) {
         const winScore = docSnap.data().score + point
         updateDoc(doc(database, 'users', uid), {

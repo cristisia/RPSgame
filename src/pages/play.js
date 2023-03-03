@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { checkLogin } from '../action/auth'
 import { addScore } from '../action/score'
 import { database } from '../services/firebase'
 import { collection, getDocs, getDoc, updateDoc, doc } from 'firebase/firestore'
-import { useSelector } from 'react-redux'
+import 'bootstrap/dist/css/bootstrap.css'
 import Head from 'next/head'
 import Image from 'next/image'
-import 'bootstrap/dist/css/bootstrap.css'
 import Header from '../components/Header'
-import { useRouter } from 'next/router'
 
 const Play = () => {
-  const uid = useSelector(state => state.uid)
-  const router = useRouter()
-
   const [users, setUSers] = useState([])
 
   const [userPick, setUserPick] = useState('')
@@ -77,7 +72,7 @@ const Play = () => {
     const getUsers = async () => {
       const arrUsers = []
       const dataUsersRef = collection(database, 'users')
-      const compileData = await getDocs(dataUsersRef).then((res) => {
+      await getDocs(dataUsersRef).then((res) => {
         res.forEach((e) => {
           arrUsers.push(e.data())
         })
@@ -110,8 +105,7 @@ const Play = () => {
           document.getElementById('refresh-btn').textContent = 'Play Again'
           document.getElementById('refresh-btn').style.display = 'block'
           getDoc(doc(database, 'users', uid))
-            .then
-            (docSnap => {
+            .then(docSnap => {
               if (docSnap.exists()) {
                 updateDoc(doc(database, 'users', uid), {
                   rpsPlayed: 'Already Played'
@@ -146,8 +140,7 @@ const Play = () => {
           document.getElementById('refresh-btn').textContent = 'Play Again'
           document.getElementById('refresh-btn').style.display = 'block'
           getDoc(doc(database, 'users', uid))
-            .then
-            (docSnap => {
+            .then(docSnap => {
               if (docSnap.exists()) {
                 updateDoc(doc(database, 'users', uid), {
                   rpsPlayed: 'Already Played'
@@ -195,10 +188,10 @@ const Play = () => {
     startButton.style.display = 'none'
     roundText.style.display = 'block'
     if (userScore === 0 && comScore === 0) {
-
+      // lanjutkan permainan
     } else {
       if (resultText.textContent === 'DRAW') {
-
+        // lanjutkan permainan
       } else {
         const nextRound = round + 1
         setRound(nextRound)

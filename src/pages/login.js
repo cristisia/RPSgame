@@ -1,7 +1,6 @@
 // import {useNavigate} from 'react-router-dom'
 
 import { useRouter } from 'next/router'
-import DynamicButton from '../components/DynamicButton'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useState, useEffect } from 'react'
 import { database } from '../services/firebase'

@@ -1,5 +1,4 @@
-import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'
-import { authFirebase } from '../services/firebase'
+import { getAuth, signOut } from 'firebase/auth'
 
 export const checkLogin = () => {
   if (typeof window !== 'undefined') {

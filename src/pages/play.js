@@ -6,7 +6,7 @@ import { collection, getDocs, getDoc, updateDoc, doc } from 'firebase/firestore'
 import 'bootstrap/dist/css/bootstrap.css'
 import Head from 'next/head'
 import Image from 'next/image'
-import Header from '../components/Header'
+// import Header from '../components/Header'
 
 const Play = () => {
   const [users, setUSers] = useState([])
@@ -217,7 +217,7 @@ const Play = () => {
         <Head>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
-        <Header />
+        {/* <Header /> */}
         <div className="d-grid" style={{ backgroundColor: '#9C835F', gridTemplateColumns: 'auto', gridTemplateRows: 'auto auto', height: 'auto' }}>
             <div id="game-title" className="d-grid contianer" style={{ gridTemplateColumns: 'auto auto', gridTemplateRows: 'auto', marginTop: '10px' }}>
                 <h1 className="title" style={{ marginLeft: '460px', color: 'rgb(255, 191, 44)', textAlign: 'center' }}>ROCK PAPER SCISSORS</h1>
@@ -253,7 +253,7 @@ const Play = () => {
             </div>
             <div className="container-fluid" id="game-play">
                 <div className="row">
-                    <div className="col-lg-5 col-sm-4 d-grid" id="player-hand" style={{ justifyItems: 'end', paddingRight: '5vw' }}>
+                    <div className="col-lg-5 col-sm-4 d-grid" id="player-hand" data-testid='player-hand' style={{ justifyItems: 'end', paddingRight: '5vw' }}>
                         <div className="name d-grid"
                         style={{ width: '223px', fontSize: '36px', fontWeight: '700', color: 'black', justifyItems: 'center', alignItems: 'center' }}>
                             <p id="player-text">PLAYER 1</p>
@@ -265,7 +265,7 @@ const Play = () => {
                             <p style={{ display: 'none' }} id="round-text">Round: {round}</p>
                         </div>
                     </div>
-                    <div className="col-lg-5 col-sm-4" id="com-hand" style={{ paddingLeft: '5vw' }}>
+                    <div className="col-lg-5 col-sm-4" id="com-hand" data-testid='com-hand' style={{ paddingLeft: '5vw' }}>
                         <div className="name d-grid"
                         style={{ width: '223px', fontSize: '36px', fontWeight: '700', color: 'black', justifyItems: 'center', alignItems: 'center' }}>
                             <p id="com-text">COM</p>
@@ -273,13 +273,13 @@ const Play = () => {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-lg-5 col-sm-4 d-grid" id="player-score" style={{ justifyItems: 'end', paddingRight: '5vw' }}>
+                    <div className="col-lg-5 col-sm-4 d-grid" id="player-score" data-testid='player-score' style={{ justifyItems: 'end', paddingRight: '5vw' }}>
                         <div className="score d-grid"
                         style={{ width: '223px', fontSize: '36px', fontWeight: '700', color: 'black', justifyItems: 'center', alignItems: 'center' }}>
                             <p id="player-score-text">Score: {userScore}</p>
                         </div>
                     </div>
-                    <div className="col-lg-5 offset-lg-2 col-sm-4 offset-sm-4" id="com-score" style={{ paddingLeft: '5vw' }}>
+                    <div className="col-lg-5 offset-lg-2 col-sm-4 offset-sm-4" id="com-score" data-testid='com-score' style={{ paddingLeft: '5vw' }}>
                         <div className="score d-grid"
                         style={{ width: '223px', fontSize: '36px', fontWeight: '700', color: 'black', justifyItems: 'center', alignItems: 'center' }}>
                             <p id="com-score-text">Score: {comScore}</p>
@@ -340,13 +340,13 @@ const Play = () => {
                         </div>
                     </div>
                 </div>
-                <div className="d-grid" id="refresh" style={{ justifyItems: 'center' }}>
+                <div className="d-grid" id="refresh" data-testid='refresh' style={{ justifyItems: 'center' }}>
                     <button id="refresh-btn" onClick={handleStart}>
                         <p id="start-round">Play Game</p>
                     </button>
                 </div>
                 <div>
-                    <p id="game-winner"
+                    <p id="game-winner" data-testid='game-winner'
                         style={{ fontSize: '50px', textAlign: 'center', display: 'none', color: 'yellow', backgroundColor: 'blue', marginTop: '10px' }}>{result}</p>
                 </div>
             </div>

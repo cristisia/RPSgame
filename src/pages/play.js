@@ -6,7 +6,7 @@ import { collection, getDocs, getDoc, updateDoc, doc } from 'firebase/firestore'
 import 'bootstrap/dist/css/bootstrap.css'
 import Head from 'next/head'
 import Image from 'next/image'
-// import Header from '../components/Header'
+import Header from '../components/Header'
 
 const Play = () => {
   const [users, setUSers] = useState([])
@@ -217,7 +217,7 @@ const Play = () => {
         <Head>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
-        {/* <Header /> */}
+        <Header />
         <div className="d-grid" style={{ backgroundColor: '#9C835F', gridTemplateColumns: 'auto', gridTemplateRows: 'auto auto', height: 'auto' }}>
             <div id="game-title" className="d-grid contianer" style={{ gridTemplateColumns: 'auto auto', gridTemplateRows: 'auto', marginTop: '10px' }}>
                 <h1 className="title" style={{ marginLeft: '460px', color: 'rgb(255, 191, 44)', textAlign: 'center' }}>ROCK PAPER SCISSORS</h1>

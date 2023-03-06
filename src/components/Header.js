@@ -1,11 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
 import { logOut } from '../action/auth'
-import { useSelector } from 'react-redux'
-import { getDoc, doc } from 'firebase/firestore'
-import { database } from '@/services/firebase'
 
 import {
   Collapse,
@@ -17,21 +13,9 @@ import {
 } from 'reactstrap'
 
 const Header = () => {
-  const user = useSelector((state) => state.username)
   const [isOpen, setIsOpen] = useState(false)
   const [sticky, setSticky] = useState(false)
-  const [data, setData] = useState({
-    username: '',
-    score: '',
-    rpsPlayed: null,
-    latoPlayed: null,
-    punchPlayed: null
-  })
   const toggle = () => setIsOpen(!isOpen)
-  const router = useRouter()
-  function redirect () {
-    router.push('/landingpage')
-  }
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
@@ -43,7 +27,6 @@ const Header = () => {
       document.getElementById('gamelist').style.display = 'none'
       document.getElementById('login').style.display = 'block'
       document.getElementById('logout').style.display = 'none'
-      document.getElementById('user').style.display = 'none'
     } else {
       document.getElementById('home').style.display = 'block'
       document.getElementById('profile').style.display = 'block'
@@ -51,17 +34,6 @@ const Header = () => {
       document.getElementById('gamelist').style.display = 'block'
       document.getElementById('login').style.display = 'none'
       document.getElementById('logout').style.display = 'block'
-      document.getElementById('user').style.display = 'block'
-      getDoc(doc(database, 'users', uid))
-        .then(docSnap => {
-          if (docSnap.exists()) {
-            setData({
-              ...data, ...docSnap.data()
-            })
-          } else {
-            console.log('No such document!')
-          }
-        })
     }
   }, [])
 
@@ -100,7 +72,6 @@ const Header = () => {
                         <NavItem>
                             <NavLink color="light" href="/login" id='login'>Login</NavLink>
                         </NavItem>
-                        <p style={{ color: 'white' }} id='user'>Hi, {data.username}. Score: {data.score}</p>
                         <NavItem>
                             <NavLink color="light" onClick={handleClick} id='logout'>Log Out</NavLink>
                         </NavItem>

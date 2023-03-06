@@ -1,7 +1,8 @@
-import Head from 'next/head';
+/* eslint-disable no-unused-vars */
+import Head from 'next/head'
 
 const Layout = props => {
-    return (
+  return (
         <div>
             <Head>
                 <title>{props.pageTitle}</title>
@@ -14,7 +15,7 @@ const Layout = props => {
                 {props.children}
             </div>
         </div>
-    )
+  )
 }
 
 export default Layout

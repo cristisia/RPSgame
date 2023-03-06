@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import "bootstrap/dist/css/bootstrap.min.css";
-import { checkLogin } from "../action/auth";
-import { getDoc, doc, updateDoc } from "firebase/firestore";
-import { database } from "../services/firebase";
-import Header from '../components/Header';
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { checkLogin } from '../action/auth'
+import { getDoc, doc, updateDoc } from 'firebase/firestore'
+import { database } from '../services/firebase'
+import Header from '../components/Header'
 
 const Profile = () => {
   const [data, setData] = useState({
     firstName: '',
     lastName: '',
-    username:'',
-    email:'',
+    username: '',
+    email: '',
     address: '',
     country: '',
     handphone: '',
@@ -20,41 +21,40 @@ const Profile = () => {
   const [loading, setLoading] = useState(true)
 
   const handleChange = (event) => {
-    let inputs = {[event.target.name] : event.target.value}
-    setData({...data, ...inputs})
+    const inputs = { [event.target.name]: event.target.value }
+    setData({ ...data, ...inputs })
   }
 
-//   const handleSubmit = () => {
-//     const uid = localStorage.getItem('uid')
-//     const update = updateDoc(doc(database, "users", uid), data)
-//     .then 
-//     console.log(update)
-//     (alert('Update success.'))
-//   }
+  //   const handleSubmit = () => {
+  //     const uid = localStorage.getItem('uid')
+  //     const update = updateDoc(doc(database, "users", uid), data)
+  //     .then
+  //     console.log(update)
+  //     (alert('Update success.'))
+  //   }
 
   useEffect(() => {
-    checkLogin();
-    const uid = localStorage.getItem('uid');
-    getDoc(doc(database, "users", uid))
-    .then
-    (docSnap => {
-      if(docSnap.exists()) {
+    checkLogin()
+    const uid = localStorage.getItem('uid')
+    getDoc(doc(database, 'users', uid))
+      .then(docSnap => {
+        if (docSnap.exists()) {
         // console.log(docSnap.data())
-        setData({
-          ...data, ...docSnap.data() 
-        })
-        setLoading(false)
-      } else {
-        console.log("No such document!");
-      }
-    })
+          setData({
+            ...data, ...docSnap.data()
+          })
+          setLoading(false)
+        } else {
+          console.log('No such document!')
+        }
+      })
   }, [])
 
-  if(loading) {
+  if (loading) {
     return <h1>Loading ...</h1>
   }
 
-    return (
+  return (
       <>
       <Header />
       <div className="container rounded bg-white mt-5">
@@ -106,7 +106,7 @@ const Profile = () => {
         </div>
       </div>
       </>
-    );
-};
-  
-export default Profile;
+  )
+}
+
+export default Profile

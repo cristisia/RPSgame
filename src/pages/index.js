@@ -1,12 +1,13 @@
-import React from "react";
-import { Container, Row, Col } from "reactstrap";
-import Image from "next/image";
-import Layout from "../components/Layout";
-import Header from "../components/Header";
-import { checkLogout } from "../action/auth";
+/* eslint-disable no-unused-vars */
+import React from 'react'
+import { Container, Row, Col } from 'reactstrap'
+import Image from 'next/image'
+import Layout from '../components/Layout'
+import Header from '../components/Header'
+import { checkLogout } from '../action/auth'
 
 const LandingPage = () => {
-  checkLogout();
+  checkLogout()
 
   return (
     <>
@@ -18,7 +19,7 @@ const LandingPage = () => {
               <Col lg={6}>
                 <div className="pr-lg-5">
                   <h1 className="mb-4 font-weight-normal line-height-1_4">
-                    Welcome To Rock-Paper-Scissors{" "}
+                    Welcome To Rock-Paper-Scissors{' '}
                     <span className="text-warning font-weight-medium">
                       Game
                     </span>
@@ -29,13 +30,13 @@ const LandingPage = () => {
                     scissors, scissors win against paper, and paper win against
                     rock.
                     <b className="text-dark">
-                      {" "}
+                      {' '}
                       Now let&apos;s see can you beat against our AI with
                       ungodly skills in this game.
                     </b>
                   </p>
                   <a href="#" className="btn btn-warning">
-                    Login To Play{" "}
+                    Login To Play{' '}
                     <span className="ml-2 right-icon">&#8594;</span>
                   </a>
                 </div>
@@ -43,7 +44,7 @@ const LandingPage = () => {
               <Col lg={6}>
                 <div className="mt-5 mt-lg-0">
                   <Image
-                    src={"/images/RPS-background.jpg"}
+                    src={'/images/RPS-background.jpg'}
                     alt="RPSbackground"
                     width="1280"
                     height="768"
@@ -56,6 +57,6 @@ const LandingPage = () => {
         </section>
       </Layout>
     </>
-  );
-};
-export default LandingPage;
+  )
+}
+export default LandingPage

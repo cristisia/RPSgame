@@ -1,3 +1,5 @@
+/* eslint comma-dangle: ["error", "always-multiline"] */
+/* eslint eol-last: ["error", "never"] */
 const nextJest = require('next/jest')
 
 const createJestConfig = nextJest({

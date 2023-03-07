@@ -1,3 +1,4 @@
+/* eslint-disable func-call-spacing */
 import React, { useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { checkLogin } from '../action/auth'
@@ -49,23 +50,30 @@ const Edit = () => {
 
   const handleSubmit = () => {
     const uid = localStorage.getItem('uid')
+    // setEditing('processing ...')
+    // const timeout = 5000
+    // setTimeout(() => {
+    //   const update = updateDoc(doc(database, 'users', uid), data)
+    //     .then;
+    //   (alert('Update success.'))
+    //   setEditing('Done')
+    //   window.location = '/profile'
+    // }, timeout)
     setEditing('processing ...')
-    const timeout = 5000
+    const update = updateDoc(doc(database, 'users', uid), data)
+      .then
+      ;(alert('Update success.'))
     setTimeout(() => {
-      const update = updateDoc(doc(database, 'users', uid), data)
-        .then
-        (alert('Update success.'))
       setEditing('Done')
       window.location = '/profile'
-    }, timeout)
+    }, 5000)
   }
 
   useEffect(() => {
     checkLogin()
     const uid = localStorage.getItem('uid')
     getDoc(doc(database, 'users', uid))
-      .then
-      (docSnap => {
+      .then(docSnap => {
         if (docSnap.exists()) {
           // console.log(docSnap.data())
           setData({

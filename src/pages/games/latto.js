@@ -42,7 +42,7 @@ function Latto () {
           Click to Generate Score
         </Button>
         <Container className="py-3">
-          <h4 className="text-white">Your Current Score :</h4>
+          <h4 data-testid='score' className="text-white">Your Current Score :</h4>
           <input
             className="text-center"
             type="text"

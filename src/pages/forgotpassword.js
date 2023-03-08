@@ -44,7 +44,7 @@ export default class ForgotPassword extends Component {
     return (
             <MDBContainer className="p-3 my-5 d-flex flex-column w-25">
 
-<MDBInput wrapperClass='mb-4' label='Email address' id='form1' type='email' name="email" onChange={event => this.handleInputForgot(event)}/>
+<MDBInput wrapperClass='mb-4' label='Email address' id='form1' data-testid='form1' type='email' name="email" onChange={event => this.handleInputForgot(event)}/>
 
 <button type="button" className="btn btn-primary btn-rounded mb-4 w-100" onClick={this.handleSubmitForgot}>Forgot Password</button>
 

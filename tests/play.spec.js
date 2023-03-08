@@ -1,6 +1,6 @@
-import Play from "../src/pages/play";
-import "@testing-library/jest-dom";
-import { fireEvent, render, screen } from "@testing-library/react";
+import Play from '../src/pages/play'
+import '@testing-library/jest-dom'
+import { fireEvent, render, screen } from '@testing-library/react'
 
 describe('Play Page', () => {
   it('Render RPS play page', () => {

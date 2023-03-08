@@ -7,12 +7,14 @@ import { Table } from 'react-bootstrap'
 import { checkLogin } from '../action/auth'
 
 import Modal from 'react-bootstrap/Modal'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import { database } from '../services/firebase'
 import { collection, getDocs, getDoc, doc } from 'firebase/firestore'
-
+import { useReactToPrint } from 'react-to-print'
 function LattoModal (props) {
+
+  const componentPDF=useRef()
   const [users, setUSers] = useState([])
 
   const getUsers = async () => {
@@ -32,20 +34,25 @@ function LattoModal (props) {
     })
   }, [])
 
+  const generatePDF = useReactToPrint({
+    content: () => componentPDF.current,
+    documentTitle: "users",
+    onAfterPrint:() => alert("Converted to PDF")
+  })
   return (
-    <Modal
+    <Modal 
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
+        <Modal.Title id="contained-modal-title-vcenter"  >
           Latto-latto
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h5>The story...</h5>
+        <h5 >The story...</h5>
         <p className="text-justify">
           This game is called Lato-Lato. However, Lato-Lato is not from
           Indonesia. This game is a traditional game originating from the United
@@ -67,8 +74,9 @@ function LattoModal (props) {
         </Button> */}
 
         <Modal.Body>
-          <h2 className="text-center">Leaderboard</h2>
+          <h2 data-testid='leaderboards' className="text-center">Leaderboard</h2>
         </Modal.Body>
+        <div ref={componentPDF} style={{width:'100%'}}>
         <Table striped bordered hover size="">
           <thead>
             <tr>
@@ -89,9 +97,12 @@ function LattoModal (props) {
             ))}
           </tbody>
         </Table>
-
+        </div>
         <Button variant="warning" href="/games/latto" onClick={props.onHide}>
           Play Now
+        </Button>
+        <Button variant="warning" onClick={generatePDF}>
+          Export to PDF
         </Button>
       </Modal.Footer>
     </Modal>
@@ -99,6 +110,7 @@ function LattoModal (props) {
 }
 
 function PrsModal (props) {
+  const componentPDF=useRef()
   const [users, setUSers] = useState([])
 
   const getUsers = async () => {
@@ -117,6 +129,12 @@ function PrsModal (props) {
       setUSers(res)
     })
   }, [])
+
+  const generatePDF = useReactToPrint({
+    content: () => componentPDF.current,
+    documentTitle: "users",
+    onAfterPrint:() => alert("Converted to PDF")
+  })
 
   return (
     <Modal
@@ -157,6 +175,7 @@ function PrsModal (props) {
         <Modal.Body>
           <h2 className="text-center">Leaderboard</h2>
         </Modal.Body>
+        <div ref={componentPDF} style={{width:'100%'}}>
         <Table striped bordered hover size="">
           <thead>
             <tr>
@@ -177,14 +196,13 @@ function PrsModal (props) {
             ))}
           </tbody>
         </Table>
-        <a href="Leaderboardch11.pdf" download="Leaderboardch11.pdf">
-          <button className="downloadPDF">
-            <span class="pdf-icon"></span>
-            <span class="pdf-text">Download leaderboard in PDF</span>
-          </button>
-        </a>
+        </div>
+       
         <Button variant="warning" href="/play" onClick={props.onHide}>
           Play Now
+        </Button>
+        <Button variant="warning" onClick={generatePDF}>
+          Export to PDF
         </Button>
       </Modal.Footer>
     </Modal>
@@ -192,6 +210,7 @@ function PrsModal (props) {
 }
 
 function PunchManModal (props) {
+  const componentPDF=useRef()
   const [users, setUSers] = useState([])
 
   const getUsers = async () => {
@@ -210,6 +229,12 @@ function PunchManModal (props) {
       setUSers(res)
     })
   }, [])
+
+  const generatePDF = useReactToPrint({
+    content: () => componentPDF.current,
+    documentTitle: "users",
+    onAfterPrint:() => alert("Converted to PDF")
+  })
 
   return (
     <Modal
@@ -243,6 +268,7 @@ function PunchManModal (props) {
         <Modal.Body>
           <h2 className="text-center">Leaderboard</h2>
         </Modal.Body>
+        <div ref={componentPDF} style={{width:'100%'}}>
         <Table striped bordered hover size="">
           <thead>
             <tr>
@@ -263,9 +289,12 @@ function PunchManModal (props) {
             ))}
           </tbody>
         </Table>
-
+        </div>
         <Button variant="warning" href="/games/punchman" onClick={props.onHide}>
           Play Now
+        </Button>
+        <Button variant="warning" onClick={generatePDF}>
+          Export to PDF
         </Button>
       </Modal.Footer>
     </Modal>
@@ -299,9 +328,9 @@ function GameList () {
   }, [])
 
   return (
-    <div style={{ backgroundColor: '#659dbd', height: '100vh' }}>
+    <div  style={{ backgroundColor: '#659dbd', height: '100vh' }}>
       <Header />
-      <h1 className="text-center py-5">GAME LIST</h1>
+      <h1 className="text-center py-5"  >GAME LIST</h1>
       <div className="container-fluid pb-5">
         <div className="d-flex justify-content-around">
           <Card style={{ width: '18rem' }} className="shadow">

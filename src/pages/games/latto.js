@@ -32,7 +32,7 @@ function Latto () {
     <>
       <Header />
       <div className="container text-center">
-        <h1 className="text-white py-5">THIS IS LATTO GAMES</h1>
+        <h1 data-testid='latto-game' className="text-white py-5">THIS IS LATTO GAMES</h1>
         <br />
         <Button
           variant="warning"

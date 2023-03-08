@@ -37,10 +37,13 @@ const Edit = () => {
     country: '',
     handphone: '',
     accountNumber: '',
-    score: ''
+    score: '',
+    photoUrl: ''
   })
   const [loading, setLoading] = useState(true)
   const [editing, setEditing] = useState('Update Profile')
+  const [image, setImage] = useState('')
+  const [isUploadPhoto, setIsUploadPhoto] = useState(false)
 
   const handleChange = (event) => {
     const inputs = { [event.target.name]: event.target.value }
@@ -50,14 +53,40 @@ const Edit = () => {
   const handleSubmit = () => {
     const uid = localStorage.getItem('uid')
     setEditing('processing ...')
+    console.log(data)
     const timeout = 5000
-    setTimeout(() => {
-      const update = updateDoc(doc(database, 'users', uid), data)
+    setTimeout( async () => {
+      const update = await updateDoc(doc(database, 'users', uid), data)
         .then
         (alert('Update success.'))
       setEditing('Done')
       window.location = '/profile'
     }, timeout)
+  }
+
+  const updatePhoto = async (e) => {
+    const uploadData = new FormData()
+    uploadData.append('file', image)
+    uploadData.append('upload_preset', 'photoProfile')
+    uploadData.append('cloud_name', 'dqbjpvdhk')
+
+    fetch('https://api.cloudinary.com/v1_1/dqbjpvdhk/image/upload', {
+      method: 'post',
+      body: uploadData
+    }).then((res) => res.json())
+    .then((uploadData) => {
+      console.log(uploadData)
+      let updatedValue = {}
+      updatedValue = {photoUrl: uploadData.url}
+      setData(data => ({
+        ...data,
+        ...updatedValue
+      }))
+      setIsUploadPhoto(true)
+      console.log(data)
+    }).catch((err) => {
+      console.log(err)
+    })
   }
 
   useEffect(() => {
@@ -89,7 +118,15 @@ const Edit = () => {
           <div className="row">
             <div className="col-md-4 border-right">
               <div className="d-flex flex-column align-items-center text-center p-3 py-5">
-                <img className="rounded-circle mt-5" src="https://i.imgur.com/0eg0aG0.jpg" width={90} alt="profile"/><span className="font-weight-bold">{data.username}</span><span className="text-black-50">{data.email}</span><span>SCORE = {data.score}</span></div>
+                <img className="rounded-circle mt-5" src={data.photoUrl} width={90} alt="profile"/>
+                <span className="font-weight-bold">{data.username}</span>
+                <span className="text-black-50">{data.email}</span><span>SCORE = {data.score}</span>
+                <input type='file' accept='.jpg,.png' placeholder='Upload your profile picture' onChange={(e) => setImage(e.target.files[0])}/>
+                {isUploadPhoto ? 
+                  <p style={{color: 'green', fontWeight: 'bold'}}>Uploaded</p>:
+                  <button onClick={(e) => updatePhoto(e)}>Upload</button>
+                }
+              </div>
             </div>
             <div className="col-md-8">
               <div className="p-3 py-5">

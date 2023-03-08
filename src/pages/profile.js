@@ -16,7 +16,8 @@ const Profile = () => {
     country: '',
     handphone: '',
     accountNumber: '',
-    score: ''
+    score: '',
+    photoUrl: ''
   })
   const [loading, setLoading] = useState(true)
 
@@ -60,7 +61,11 @@ const Profile = () => {
       <div className="container rounded bg-white mt-5">
         <div className="row">
           <div className="col-md-4 border-right">
-            <div className="d-flex flex-column align-items-center text-center p-3 py-5"><img className="rounded-circle mt-5" src="https://i.imgur.com/0eg0aG0.jpg" width={90} alt="profile"/><span className="font-weight-bold">{data.username}</span><span className="text-black-50">{data.email}</span><span>SCORE = {data.score}</span></div>
+            <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+              <img className="rounded-circle mt-5" src={data.photoUrl} width={90} alt="profile"/>
+              <span className="font-weight-bold">{data.username}</span>
+              <span className="text-black-50">{data.email}</span><span>SCORE = {data.score}</span>
+            </div>
           </div>
           <div className="col-md-8">
             <div className="p-3 py-5">

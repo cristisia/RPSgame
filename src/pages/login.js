@@ -46,7 +46,8 @@ function Signin () {
     score: 0,
     rpsPlayed: '',
     latoPlayed: '',
-    punchPlayed: ''
+    punchPlayed: '',
+    photoUrl: 'https://i.imgur.com/0eg0aG0.jpg'
   })
   const [signUpProcessing, setSignUpProcessing] = useState('Sign Up')
   const [loginProcessing, setLoginProcessing] = useState('Sign In')

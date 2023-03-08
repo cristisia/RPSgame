@@ -10,4 +10,4 @@ build project:
   image: node:15
   script:
     - npm install
-    - npm build
+    - npm run build

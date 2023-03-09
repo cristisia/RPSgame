@@ -51,34 +51,34 @@ const Header = () => {
   }
 
   return (
-        <Navbar color="dark" light container="md" expand="md" sticky={sticky ? 'top' : ''}>
-            <Image src="/images/R-P-S.png" width="120" height="60" quality="70" />
-            <NavbarToggler onClick={toggle} />
-            <Collapse isOpen={isOpen} navbar>
-                <Nav className="ms-auto" navbar>
-                    <Nav className="m-auto" navbar>
-                        <NavItem>
-                            <NavLink color="light" href="/home" id='home'>Home</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink color="light" href="/profile" id='profile'>Profile</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink color="light" href="/listuser" id='listuser'>List User</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink color="light" href="/gamelist" id='gamelist'>Game List</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink color="light" href="/login" id='login'>Login</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink color="light" onClick={handleClick} id='logout'>Log Out</NavLink>
-                        </NavItem>
-                    </Nav>
-                </Nav>
-            </Collapse>
-        </Navbar>
+    <Navbar color="dark" light container="md" expand="md" sticky={sticky ? 'top' : ''} id="navbar" data-testid="navbar" >
+      <Image src="/images/R-P-S.png" width="120" height="60" quality="70" id="nav-logo" data-testid="nav-logo" alt="logo-nav" />
+      <NavbarToggler onClick={toggle} />
+      <Collapse isOpen={isOpen} navbar>
+        <Nav className="ms-auto" navbar>
+            <Nav className="m-auto" navbar>
+              <NavItem>
+                <NavLink color="light" href="/home" id='home' data-testid="home">Home</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink color="light" href="/profile" id='profile' data-testid="profile">Profile</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink color="light" href="/listuser" id='listuser' data-testid="listuser">List User</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink color="light" href="/gamelist" id='gamelist' data-testid="gamelist">Game List</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink color="light" href="/login" id='login' data-testid="login">Login</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink color="light" onClick={handleClick} id='logout' data-testid="logout">Log Out</NavLink>
+              </NavItem>
+            </Nav>
+        </Nav>
+      </Collapse>
+    </Navbar>
   )
 }
 

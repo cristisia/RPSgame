@@ -55,10 +55,9 @@ const Edit = () => {
     setEditing('processing ...')
     console.log(data)
     const timeout = 5000
-    setTimeout( async () => {
+    setTimeout(async () => {
       const update = await updateDoc(doc(database, 'users', uid), data)
-        .then
-        (alert('Update success.'))
+        .then(alert('Update success.'))
       setEditing('Done')
       window.location = '/profile'
     }, timeout)
@@ -74,27 +73,26 @@ const Edit = () => {
       method: 'post',
       body: uploadData
     }).then((res) => res.json())
-    .then((uploadData) => {
-      console.log(uploadData)
-      let updatedValue = {}
-      updatedValue = {photoUrl: uploadData.url}
-      setData(data => ({
-        ...data,
-        ...updatedValue
-      }))
-      setIsUploadPhoto(true)
-      console.log(data)
-    }).catch((err) => {
-      console.log(err)
-    })
+      .then((uploadData) => {
+        console.log(uploadData)
+        let updatedValue = {}
+        updatedValue = { photoUrl: uploadData.url }
+        setData(data => ({
+          ...data,
+          ...updatedValue
+        }))
+        setIsUploadPhoto(true)
+        console.log(data)
+      }).catch((err) => {
+        console.log(err)
+      })
   }
 
   useEffect(() => {
     checkLogin()
     const uid = localStorage.getItem('uid')
     getDoc(doc(database, 'users', uid))
-      .then
-      (docSnap => {
+      .then(docSnap => {
         if (docSnap.exists()) {
           // console.log(docSnap.data())
           setData({
@@ -122,9 +120,9 @@ const Edit = () => {
                 <span className="font-weight-bold">{data.username}</span>
                 <span className="text-black-50">{data.email}</span><span>SCORE = {data.score}</span>
                 <input type='file' accept='.jpg,.png' placeholder='Upload your profile picture' onChange={(e) => setImage(e.target.files[0])}/>
-                {isUploadPhoto ? 
-                  <p style={{color: 'green', fontWeight: 'bold'}}>Uploaded</p>:
-                  <button onClick={(e) => updatePhoto(e)}>Upload</button>
+                {isUploadPhoto
+                  ? <p style={{ color: 'green', fontWeight: 'bold' }}>Uploaded</p>
+                  : <button onClick={(e) => updatePhoto(e)}>Upload</button>
                 }
               </div>
             </div>

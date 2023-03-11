@@ -1,3 +1,7 @@
+stages:
+- test
+- build
+
 test project:
   stage: test
   image: node:15
@@ -11,3 +15,4 @@ build project:
   script:
     - npm install
     - npm run build
+ 

@@ -47,12 +47,12 @@ const Header = () => {
 
   const handleClick = () => {
     logOut()
-    router.push('/login')
+    window.location.assign('/login')
   }
 
   return (
         <Navbar color="dark" light container="md" expand="md" sticky={sticky ? 'top' : ''}>
-            <Image src="/images/R-P-S.png" width="120" height="60" quality="70" />
+            <Image src="/images/prslogo.jpg" width="60" height="60" quality="70" />
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar>
                 <Nav className="ms-auto" navbar>

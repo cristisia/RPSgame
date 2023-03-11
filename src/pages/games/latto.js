@@ -16,8 +16,7 @@ function Latto () {
     addScore('users', lattoScore)
     const uid = localStorage.getItem('uid')
     getDoc(doc(database, 'users', uid))
-      .then
-      (docSnap => {
+      .then(docSnap => {
         if (docSnap.exists()) {
           updateDoc(doc(database, 'users', uid), {
             latoPlayed: 'Already Played'

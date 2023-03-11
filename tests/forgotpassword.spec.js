@@ -1,6 +1,6 @@
-import ForgotPassword from "../src/pages/forgotpassword";
-import "@testing-library/jest-dom";
-import { fireEvent, render, screen } from "@testing-library/react";
+import ForgotPassword from '../src/pages/forgotpassword'
+import '@testing-library/jest-dom'
+import { fireEvent, render, screen } from '@testing-library/react'
 
 describe('forgotpassword Page', () => {
   it('Render RPS forgotpassword page', () => {

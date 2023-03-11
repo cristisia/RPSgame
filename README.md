@@ -1,20 +1,18 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
+Before run the development server, things you must to do :
 
-First, run the development server:
+1. Clone the git
+2. Run the terminal, open the folder directory and do
+npm install
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+2. Setup your own firebase at src/services/firebase.js
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Run the development server
+npm run dev 
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 

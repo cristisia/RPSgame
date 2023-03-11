@@ -29,13 +29,13 @@ const LandingPage = () => {
                     worldwide, so basically the rule is simple, rock win against
                     scissors, scissors win against paper, and paper win against
                     rock.
-                    <b className="text-dark">
+                    {/* <b className="text-dark"> */}
                       {' '}
                       Now let&apos;s see can you beat against our AI with
                       ungodly skills in this game.
-                    </b>
+                    {/* </b> */}
                   </p>
-                  <a href="#" className="btn btn-warning">
+                  <a href="/login" className="btn btn-warning">
                     Login To Play{' '}
                     <span className="ml-2 right-icon">&#8594;</span>
                   </a>

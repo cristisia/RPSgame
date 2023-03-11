@@ -12,7 +12,7 @@ module.exports = {
   },
   rules: {
     'no-unused-vars': 'off',
-    // 'jest/global': true
+    'jest/global': true,
     'no-undef': 'off'
   }
 }

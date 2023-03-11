@@ -3,7 +3,7 @@ import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import ReactPlayer from 'react-player'
 import dynamic from 'next/dynamic'
-import { checkLogin } from '@/action/auth'
+import { checkLogin } from '../action/auth'
 
 const HomePage = () => {
   checkLogin()

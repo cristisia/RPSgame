@@ -52,7 +52,7 @@ const Header = () => {
 
   return (
         <Navbar color="dark" light container="md" expand="md" sticky={sticky ? 'top' : ''}>
-            <Image src="/images/prslogo.jpg" width="60" height="60" quality="70" />
+            <Image src="/images/prslogo.jpg" width="60" height="60" quality="70" alt='nav-logo' />
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar>
                 <Nav className="ms-auto" navbar>

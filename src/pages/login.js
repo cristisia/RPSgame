@@ -1,6 +1,6 @@
 // import {useNavigate} from 'react-router-dom'
 
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/navigation'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useState, useEffect } from 'react'
 import { database } from '../services/firebase'
@@ -31,13 +31,13 @@ import {
 
 // import {useNavigate} from 'react-router-dom'
 import { checkLogout } from '../action/auth'
-import { useDispatch } from 'react-redux'
+// import { useDispatch } from 'react-redux'
 import { setUsername } from '../../redux/usernameSlice'
 
 function Signin () {
   // const navigate = useNavigate()
-  const router = useRouter()
-  const dispatch = useDispatch()
+  // const router = useRouter()
+  // const dispatch = useDispatch()
   const [data, setData] = useState({
     name: '',
     username: '',
@@ -190,10 +190,10 @@ function Signin () {
 
           </div>
 
-          <MDBInput wrapperClass='mb-4' label='Name' id='form1' type='string' name="name" onChange={event => handleInputSignup(event)}/>
+          <MDBInput wrapperClass='mb-4' label='Fullname' id='form1' type='string' name="name" onChange={event => handleInputSignup(event)}/>
           <MDBInput wrapperClass='mb-4' label='Username' id='form1' name="username" onChange={event => handleInputSignup(event)} type='string'/>
           <MDBInput wrapperClass='mb-4' label='Email' id='form1'name="email" type='email' onChange={event => handleInputSignup(event)}/>
-          <MDBInput wrapperClass='mb-4' label='Password' id='form1' name="password" type='password' onChange={event => handleInputSignup(event)} />
+          <MDBInput wrapperClass='mb-4' label='Password-placeholder' id='form1' name="password" type='password' onChange={event => handleInputSignup(event)} />
 
           <div className='d-flex justify-content-center mb-4'>
             <MDBCheckbox name='flexCheck' id='flexCheckDefault' label='I have read and agree to the terms' />
